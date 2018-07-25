@@ -69,15 +69,19 @@ public class MainActivity extends AppCompatActivity {
         private String serverAdress;
         private String serverResponse = "";
         AlertDialog.Builder dialog;
+        Context c;
         private WeakReference<MainActivity> activityReference;
+        
+        
         HttpRequestTask(MainActivity context){
             activityReference = new WeakReference<>(context);
+             c = context;
         }
         private HttpRequestTask(String serverAdress) {
             this.serverAdress = serverAdress;
 
-            dialog = new AlertDialog.Builder(activityReference.get())
-                    .setTitle("HTTP Response from Ip Address:")
+            dialog = new AlertDialog.Builder(c);
+              AlertDialog alertDialog=     dialog.setTitle("HTTP Response from Ip Address:")
                     .setCancelable(true)
                     .create();
         }
